@@ -1,0 +1,6 @@
+{
+  "extDescription": {
+    "message": "Exports all cookies to a Netscape HTTP Cookie File, as used by curl, wget, and youtube-dl, among others.",
+    "description": "Short description of the extension to be displayed in the UI and on AMO"
+  }
+}
