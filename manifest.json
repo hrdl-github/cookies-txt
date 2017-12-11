@@ -37,6 +37,7 @@
   "permissions": [
     "cookies",
     "downloads",
+    "contextualIdentities",
     "<all_urls>"
   ]
 }
