@@ -29,7 +29,7 @@ function saveCookies(cookies) {
 }
 
 function handleClick() {
-  var gettingAll = browser.cookies.getAll({});
+  var gettingAll = browser.cookies.getAll({firstPartyDomain: null});
   gettingAll.then(saveCookies);
 }
 
