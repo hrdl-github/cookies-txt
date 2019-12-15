@@ -28,10 +28,10 @@ function saveCookies(cookies) {
     saveAs: true, conflictAction: 'overwrite'});
 }
 
-function handleClick() {
-  var gettingAll = browser.cookies.getAll({});
+function handleClick(details = {}) {
+  var gettingAll = browser.cookies.getAll(details);
   gettingAll.then(saveCookies);
 }
 
-browser.browserAction.onClicked.addListener(handleClick);
-
+browser.runtime.onMessage.addListener(handleClick)
+// browser.browserAction.onClicked.addListener(handleClick);
