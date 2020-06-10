@@ -50,21 +50,21 @@ async function saveCookies(cookies) {
   );
 }
 
-function getCookies(stores) {
-  for (var store of stores) {
+function getCookies(stores_filter) {
+  for (var store of stores_filter.stores) {
     console.log("Store: " + store.id)
     var gettingAll = browser.cookies.getAll({
-        storeId: store.id,
-        firstPartyDomain: null
-    });
+        ...stores_filter.filter,
+        ...{ storeId: store.id, firstPartyDomain: null }});
     gettingAll.then(saveCookies);
   }
 }
 
-function handleClick() {
+function handleClick(filter = {}) {
   var gettingAllStores = browser.cookies.getAllCookieStores()
-  gettingAllStores.then(getCookies)
+  gettingAllStores
+    .then(stores => ({stores: stores, filter: filter}))
+    .then(getCookies);
 }
 
-browser.browserAction.onClicked.addListener(handleClick);
-
+browser.runtime.onMessage.addListener(handleClick)

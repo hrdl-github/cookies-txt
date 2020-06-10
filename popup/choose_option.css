@@ -1,0 +1,15 @@
+html, body {
+  width: 100px;
+}
+
+.button {
+  margin: 3% auto;
+  padding: 4px;
+  text-align: center;
+  font-size: 0.75em;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: khaki;
+}
