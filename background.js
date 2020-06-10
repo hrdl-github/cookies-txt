@@ -15,12 +15,12 @@ function formatCookie(co) {
 }
 
 async function getCookiesFilename(storeId) {
-  if (storeId == 'firefox-default') { 
-    return 'cookies.txt' 
+  if (storeId == 'firefox-default') {
+    return 'cookies.txt'
   } else {
     let container;
     try {
-      container = await browser.contextualIdentities.get(storeId); 
+      container = await browser.contextualIdentities.get(storeId);
     } catch (e) {
       /* In case we can't get the name of the container, fallback on the storeId */
       container = storeId
@@ -42,9 +42,9 @@ async function saveCookies(cookies) {
   let cookiesFilename = await getCookiesFilename(storeId)
   browser.downloads.download(
     {
-      url: objectURL, 
+      url: objectURL,
       filename: cookiesFilename,
-      saveAs: true, 
+      saveAs: true,
       conflictAction: 'overwrite'
     }
   );
