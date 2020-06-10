@@ -54,7 +54,8 @@ function getCookies(stores) {
   for (var store of stores) {
     console.log("Store: " + store.id)
     var gettingAll = browser.cookies.getAll({
-        storeId: store.id
+        storeId: store.id,
+        firstPartyDomain: null
     });
     gettingAll.then(saveCookies);
   }
