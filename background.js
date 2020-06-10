@@ -36,7 +36,7 @@ async function saveCookies(cookies) {
     '# This is a generated file! Do not edit.\n\n'
   ];
   var body = cookies.map(formatCookie)
-  let storeId = cookies[0].storeId
+  let storeId = cookies.length ? cookies[0].storeId : null;
   var blob = new Blob(header.concat(body), {type: 'text/plain'});
   var objectURL = URL.createObjectURL(blob);
   let cookiesFilename = await getCookiesFilename(storeId)
