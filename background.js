@@ -38,7 +38,8 @@ async function getCookiesFilename(storeId) {
  * @param {browser.cookies.Cookie[]} cookies Cookies from the store
  * @param {string} storeId ID of the store
  */
-async function saveCookies(cookies, storeId) {  var header = [
+async function saveCookies(cookies, storeId) {
+  var header = [
     '# Netscape HTTP Cookie File\n',
     '# https://curl.haxx.se/rfc/cookie_spec.html\n',
     '# This is a generated file! Do not edit.\n\n'
