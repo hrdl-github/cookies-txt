@@ -14,18 +14,25 @@ function formatCookie(co) {
   ].join('\t');
 }
 
+/**
+ * Get the cookies.txt file's name.
+ * @param {string} storeId ID of the cookie store to get cookies for.
+ */
 async function getCookiesFilename(storeId) {
+  console.log('Store ID', storeId);
   if (storeId == 'firefox-default') {
     return 'cookies.txt'
   } else {
-    let container;
+    let containerName;
     try {
-      container = await browser.contextualIdentities.get(storeId);
+      containerName = (await browser.contextualIdentities.get(storeId)).name;
     } catch (e) {
       /* In case we can't get the name of the container, fallback on the storeId */
-      container = storeId
+      containerName = storeId;
     }
-    return 'cookies.' + container.name + '.txt'
+    console.log('Store ID', storeId);
+    console.log('Container name', containerName);
+    return 'cookies.' + containerName + '.txt';
   }
 }
 
