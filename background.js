@@ -33,14 +33,17 @@ async function getCookiesFilename(storeId) {
   }
 }
 
-async function saveCookies(cookies) {
-  var header = [
+/**
+ * Save all cookies from a given store.
+ * @param {browser.cookies.Cookie[]} cookies Cookies from the store
+ * @param {string} storeId ID of the store
+ */
+async function saveCookies(cookies, storeId) {  var header = [
     '# Netscape HTTP Cookie File\n',
     '# https://curl.haxx.se/rfc/cookie_spec.html\n',
     '# This is a generated file! Do not edit.\n\n'
   ];
   var body = cookies.map(formatCookie)
-  let storeId = cookies.length ? cookies[0].storeId : null;
   var blob = new Blob(header.concat(body), {type: 'text/plain'});
   var objectURL = URL.createObjectURL(blob);
   let cookiesFilename = await getCookiesFilename(storeId)
@@ -54,13 +57,13 @@ async function saveCookies(cookies) {
   );
 }
 
-function getCookies(stores_filter) {
+async function getCookies(stores_filter) {
   for (var store of stores_filter.stores) {
     console.log("Store: " + store.id)
-    var gettingAll = browser.cookies.getAll({
+    var cookies = await browser.cookies.getAll({
         ...stores_filter.filter,
         ...{ storeId: store.id, firstPartyDomain: null }});
-    gettingAll.then(saveCookies);
+    saveCookies(cookies, store.id);
   }
 }
 
