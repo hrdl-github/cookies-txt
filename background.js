@@ -19,7 +19,6 @@ function formatCookie(co) {
  * @param {string} storeId ID of the cookie store to get cookies for.
  */
 async function getCookiesFilename(storeId) {
-  console.log('Store ID', storeId);
   if (storeId == 'firefox-default') {
     return 'cookies.txt'
   } else {
@@ -30,8 +29,6 @@ async function getCookiesFilename(storeId) {
       /* In case we can't get the name of the container, fallback on the storeId */
       containerName = storeId;
     }
-    console.log('Store ID', storeId);
-    console.log('Container name', containerName);
     return 'cookies.' + containerName + '.txt';
   }
 }
