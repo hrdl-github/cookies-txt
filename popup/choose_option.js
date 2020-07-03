@@ -1,3 +1,7 @@
+for (const elem of document.querySelectorAll("[data-i18n]")) {
+  elem.textContent = browser.i18n.getMessage(elem.attributes['data-i18n'].value);
+}
+
 document.addEventListener("click", (e) => {
   browser.tabs.query({active: true, currentWindow: true})
     .then(tabs => {

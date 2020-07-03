@@ -2,5 +2,17 @@
   "extDescription": {
     "message": "Exports all cookies to a Netscape HTTP Cookie File, as used by curl, wget, and youtube-dl, among others.",
     "description": "Short description of the extension to be displayed in the UI and on AMO"
+  },
+  "buttonDescription": {
+    "message": "Export cookies",
+    "description": "Tooltip of the browser toolbar icon."
+  },
+  "popupSitesAll": {
+    "message": "ALL",
+    "description": "Popup option text for exporting all cookies"
+  },
+  "popupSitesCurrent": {
+    "message": "Current Site",
+    "description": "Popup option text for exporting cookies only from the current site"
   }
 }
