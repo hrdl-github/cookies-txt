@@ -23,7 +23,7 @@
   },
 
   "browser_action": {
-    "default_title": "Export cookies",
+    "default_title": "__MSG_buttonDescription__",
     "default_icon": {
       "16": "icons/icon-16.png",
       "32": "icons/icon-32.png",

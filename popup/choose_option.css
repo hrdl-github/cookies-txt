@@ -1,15 +1,14 @@
-html, body {
-  width: 100px;
-}
-
-.button {
+button {
+  width: 100%;
   margin: 3% auto;
+  border: none;
   padding: 4px;
+  background: none;
   text-align: center;
   font-size: 0.75em;
   cursor: pointer;
 }
 
-.button:hover {
+button:hover {
   background-color: khaki;
 }
