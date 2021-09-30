@@ -5,7 +5,7 @@
     "48": "icons/icon-48.png",
     "96": "icons/icon-96.png"
   },
-  "version": "0.2",
+  "version": "0.3",
   "default_locale": "en",
   "description": "__MSG_extDescription__",
   "developer": {
