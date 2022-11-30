@@ -12,7 +12,7 @@
     "name": "Lennon Hill",
     "url": "https://github.com/hrdl-github/cookies-txt"
   },
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "strict_min_version": "57.0"
     }
