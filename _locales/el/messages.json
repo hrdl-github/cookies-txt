@@ -1,0 +1,18 @@
+{
+  "extDescription": {
+    "message": "Εξάγει όλα τα cookies σε αρχείο Netscape HTTP Cookie, όπως χρησιμοποιείται από τα curl, wget, και youtube-dl, μεταξύ άλλων.",
+    "description": "Short description of the extension to be displayed in the UI and on AMO"
+  },
+  "buttonDescription": {
+    "message": "Εξαγωγή cookies",
+    "description": "Tooltip of the browser toolbar icon."
+  },
+  "popupSitesAll": {
+    "message": "Όλα",
+    "description": "Popup option text for exporting all cookies"
+  },
+  "popupSitesCurrent": {
+    "message": "Τρέχων ιστότοπος",
+    "description": "Popup option text for exporting cookies only from the current site"
+  }
+}
