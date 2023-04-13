@@ -15,4 +15,4 @@ The Add-on is able to export the cookies for each of the containers in Firefox. 
 
 ## Licence
 
-<a href="https://github.com/hrdl-github/cookies-txt/blob/master/LICENSE">GPLv3</a>
+[GPLv3](https://github.com/hrdl-github/cookies-txt/blob/master/LICENSE)
