@@ -1,6 +1,8 @@
 # cookies.txt
 
-Firefox Add-on which exports all cookies to a Netscape HTTP Cookie File, as used by curl, wget, and youtube-dl, among others.
+Firefox Add-on which exports all cookies to a Netscape HTTP Cookie File, as
+used by curl, wget, and youtube-dl, among others. Available at
+<https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/>.
 
 ## Instructions
 This addon adds an icon to the toolbar, which can be used to toggle a popup
