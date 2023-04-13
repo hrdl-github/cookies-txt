@@ -31,7 +31,8 @@ async function getCookiesFilename(storeId) {
       /* In case we can't get the name of the container, fallback on the storeId */
       containerName = storeId;
     }
-    return 'cookies.' + containerName + '.txt';
+    let containerNameSafe = containerName.replaceAll(/[\/\\]/g, "_")
+    return 'cookies.' + containerNameSafe + '.txt';
   }
 }
 
