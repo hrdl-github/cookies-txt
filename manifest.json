@@ -14,7 +14,10 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "strict_min_version": "57.0"
+      "strict_min_version": "113.0"
+    },
+    "gecko_android": {
+      "strict_min_version": "121.0"
     }
   },
 
@@ -34,6 +37,13 @@
     },
     "default_popup": "popup/choose_option.html"
   },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
 
   "permissions": [
     "cookies",

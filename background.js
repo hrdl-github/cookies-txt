@@ -49,21 +49,30 @@ async function saveCookies(cookies, storeId) {
   ];
   var body = cookies.map(formatCookie)
   var blob = new Blob(header.concat(body), {type: 'text/plain'});
-  var objectURL = URL.createObjectURL(blob);
-  let cookiesFilename = await getCookiesFilename(storeId)
-  browser.downloads.download(
-    {
-      url: objectURL,
-      filename: cookiesFilename,
-      saveAs: true,
-      conflictAction: 'overwrite'
-    }
-  );
+  let cookiesFilename = await getCookiesFilename(storeId);
+  // browser.downloads is not supported yet and fails silently
+  if ((await browser.runtime.getPlatformInfo()).os == "android") {
+    const tabId = (await browser.tabs.query({active: true, currentWindow: true}))[0].id;
+    await browser.tabs.sendMessage(tabId, {
+      message: "Download",
+      blob: blob,
+      filename: cookiesFilename
+    });
+  } else {
+    const objectURL = URL.createObjectURL(blob);
+    browser.downloads.download(
+      {
+        url: objectURL,
+        filename: cookiesFilename,
+        saveAs: true,
+        conflictAction: 'overwrite'
+      }
+    );
+  }
 }
 
 async function getCookies(stores_filter) {
   for (var store of stores_filter.stores) {
-    console.log("Store: " + store.id)
     try {
       query = (browser.runtime.getBrowserInfo().version >= "59.0")?
         { ...stores_filter.filter,

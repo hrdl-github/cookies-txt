@@ -4,21 +4,17 @@ for (const elem of document.querySelectorAll("[data-i18n]")) {
   elem.textContent = browser.i18n.getMessage(elem.attributes['data-i18n'].value);
 }
 
-document.querySelector(".all").addEventListener("click", () => browser.runtime.sendMessage({}));
+document.querySelector(".all").addEventListener("click", () => {
+  browser.runtime.sendMessage({});
+  window.close();
+});
 document.querySelector(".current").addEventListener("click", () => {
-  /*
-  browser.tabs.query({active: true, currentWindow: true})
-    .then(tabs => {
-      console.log(JSON.stringify(tabs));
-      if (tabs.length > 0) {
-        browser.runtime.sendMessage({url: tabs[0].url});
-      }
-    });
-   */
-    browser.tabs.query({active: true, windowId: browser.windows.WINDOW_ID_CURRENT}, tabs => {
-        console.log(JSON.stringify(tabs));
+  var query = (typeof browser === "undefined") ? {active: true, windowId : browser.windows.WINDOW_ID_CURRENT}
+    :  {active: true, currentWindow: true};
+  browser.tabs.query(query, tabs => {
         if (tabs.length > 0) {
           browser.runtime.sendMessage({url: tabs[0].url});
         }
       });
+  window.close();
 });
