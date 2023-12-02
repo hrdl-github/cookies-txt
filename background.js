@@ -3,7 +3,7 @@ var browser = browser || chrome;
 function formatCookie(co) {
   return [
     [
-      co.httpOnly ? '#HttpOnly_' : '',
+      // co.httpOnly ? '#HttpOnly_' : '',
       !co.hostOnly && co.domain && !co.domain.startsWith('.') ? '.' : '',
       co.domain
     ].join(''),
