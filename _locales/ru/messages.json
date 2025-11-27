@@ -8,11 +8,11 @@
     "description": "Tooltip of the browser toolbar icon."
   },
   "copyBtn": {
-    "message": "Copy",
+    "message": "Скопировать",
     "description": "Copy button that appears next to all titles listed below"
   },
   "downloadBtn": {
-    "message": "Download",
+    "message": "Скачать",
     "description": "Download button that appears next to all titles listed below"
   },
   "popupSitesAll": {
@@ -20,15 +20,15 @@
     "description": "Popup option text for exporting all cookies"
   },
   "popupSitesCurrent": {
-    "message": "От этого сайта",
+    "message": "Текущий сайт",
     "description": "Popup option text for exporting cookies only from the current site"
   },
   "popupSitesContainerAll": {
-    "message": "Current Container",
+    "message": "Текущий контейнер",
     "description": "Popup option text for exporting all cookies from the current container"
   },
   "popupSitesContainerCurrent": {
-    "message": "Current Container and Site",
+    "message": "Текущий сайт внутри контейнера",
     "description": "Popup option text for exporting cookies only from the current site and current container"
   }
 }
