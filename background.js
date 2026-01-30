@@ -1,7 +1,18 @@
 var browser = browser || chrome;
 
 function formatCookie(co) {
-  return [
+  let lines = [];
+
+  // Add partition key as a comment if present
+  if (co.partitionKey && co.partitionKey.topLevelSite) {
+    let partInfo = co.partitionKey.topLevelSite;
+    if (co.partitionKey.hasCrossSiteAncestor) {
+      partInfo += ' (cross-site)';
+    }
+    lines.push('# Partition: ' + partInfo + '\n');
+  }
+
+  lines.push([
     [
       // co.httpOnly ? '#HttpOnly_' : '',
       !co.hostOnly && co.domain && !co.domain.startsWith('.') ? '.' : '',
@@ -13,7 +24,9 @@ function formatCookie(co) {
     co.session || !co.expirationDate ? 0 : Math.floor(co.expirationDate),
     co.name,
     co.value + '\n'
-  ].join('\t');
+  ].join('\t'));
+
+  return lines.join('');
 }
 
 /**
@@ -88,7 +101,8 @@ async function getCookies(stores_filter, clipboard = false) {
       query = {
         ...stores_filter.filter, ...{
           storeId: store.id,
-          firstPartyDomain: null
+          firstPartyDomain: null,
+          partitionKey: {},
         }
       };
       cookies = await browser.cookies.getAll(query);
@@ -99,7 +113,7 @@ async function getCookies(stores_filter, clipboard = false) {
       cookies = await browser.cookies.getAll(
         {
           ...stores_filter.filter,
-          ...{ storeId: store.id }
+          ...{ storeId: store.id, partitionKey: {} }
         },
         cookies => saveCookies(cookies, store.id, clipboard)
       );
